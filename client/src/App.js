@@ -1,11 +1,24 @@
-import React from "react";
+import './App.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+import Home from './components/UserLisr/Home';
+import Details from './components/UserLisr/Details';
+import AddUser from './components/UserLisr/AddUser';
+import Edit from './components/UserLisr/Edit';
+
 
 function App() {
   return (
-    <div className="App">
+   <>
+  
+  <Home/>
+  <AddUser/>
+  <Edit/>
+  <Details/>
    
-    </div>
+   </>
   );
 }
 
 export default App;
+

@@ -1,14 +1,16 @@
+require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-
 const app = express();
+const mongoose = require("mongoose");
+require("./db/conn");
+const users = require("./model/user");
+const cors = require("cors");
+const router = require("./routes/router");
 
-app.use(express.json());
-app.use(cors());
+const port = process.env.PORT || 8003;
 
 const mongoUrl =
-  "mongodb+srv://user123:Ha17faniQ3E3nQr3@cluster0.l58kdcd.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://user123:reena123@cluster0.l58kdcd.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
   .connect(mongoUrl, {
@@ -19,68 +21,18 @@ mongoose
   })
   .catch((e) => console.log(e));
 
-require("./userDetails");
+require("./model/user");
 
 const User = mongoose.model("userdetails");
+app.use(cors());
+app.use(express.json());
 
-app.post("./users", async (req, res) => {
-  try {
-    const { id, name, email, phone } = req.body;
-    const user = new User({ id, name, email, phone });
-    await user.save();
-    res.status(201).json(user);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server error" });
-  }
+app.get("/",(req,res)=>{
+    res.json("server start")
+})
+
+app.use(router);
+
+app.listen(port, () => {
+    console.log(`server is start port number ${port}`);
 });
-
-//get user by userid
-app.get("users/:user_id", async (req, res) => {
-  try {
-    const { user_id } = req.params;
-    const user = await User.findById(user_id);
-    if (!user) {
-      return res.status(404).json({ error: "user not found" });
-    }
-    res.json(user);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-
-//update specific user
-app.put('/users/:user_id', async (req, res) => {
-       try {
-         const { user_id } = req.params;
-         const { name, email, phone } = req.body;
-         const user = await User.findByIdAndUpdate(user_id, { name, email, phone }, { new: true });
-         if (!user) {
-           return res.status(404).json({ error: 'User not found' });
-         }
-         res.json(user);
-       } catch (error) {
-         console.error(error);
-         res.status(500).json({ error: 'Internal server error' });
-       }
-     });
-
-     app.delete('/users/:user_id', async (req, res) => {
-       try {
-         const { user_id } = req.params;
-         const user = await User.findByIdAndDelete(user_id);
-         if (!user) {
-           return res.status(404).json({ error: 'User not found' });
-         }
-         res.json({ message: 'User deleted successfully' });
-       } catch (error) {
-         console.error(error);
-         res.status(500).json({ error: 'Internal server error' });
-       }
-     });
-     
-app.listen(3001, () => {
-       console.log('Server listening on port 3001');
-     });
