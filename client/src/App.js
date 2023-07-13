@@ -1,24 +1,19 @@
-import './App.css';
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-import Home from './components/UserLisr/Home';
-import Details from './components/UserLisr/Details';
-import AddUser from './components/UserLisr/AddUser';
-import Edit from './components/UserLisr/Edit';
-
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import CreateUser from "./components/CreateUser";
+import EditUser from "./components/EditUser";
 
 function App() {
   return (
-   <>
-  
-  <Home/>
-  <AddUser/>
-  <Edit/>
-  <Details/>
-   
-   </>
+    <div className="App">
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/createuser" element={<CreateUser />} />
+        <Route exact path="/edituser" element={<EditUser />} /> 
+      </Routes>
+    </div>
   );
 }
 
 export default App;
-

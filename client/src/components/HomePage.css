@@ -1,0 +1,63 @@
+body{
+       background:linear-gradient(#212121, #212121) padding-box,
+       linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
+}
+
+.header{
+      color:white;
+}
+
+.userlist {
+  height: 100vh;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.addbtn {
+  border: 2px solid #24b4fb;
+  background-color: #24b4fb;
+  border-radius: 0.9em;
+  padding: 0.8em 1.2em 0.8em 1em;
+  transition: all ease-in-out 0.2s;
+  font-size: 16px;
+}
+
+
+.addbtn span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 600;
+}
+
+.addbtn:hover {
+  background-color: #0071e2;
+}
+
+.editicon{
+  font-size: 24px;
+  margin-left: 40px;
+}
+
+.deleteicon{
+   font-size: 24px;
+   margin-left: 24px;
+}
+
+.ui.table {
+       width: 800px;
+       background: linear-gradient(#212121, #212121) padding-box,
+                   linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
+       margin: 1em 0;
+       border: 1px solid rgba(34,36,38,.15);
+       -webkit-box-shadow: none;
+       box-shadow: none;
+       border-radius: 0.28571429rem;
+       text-align: center;
+       color: white;
+       border-collapse: separate;
+       border-spacing: 0;
+   }
