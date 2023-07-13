@@ -13,7 +13,7 @@ export default class CreateUser extends Component {
     this.handleSubmit = this.handleSubmit.bind(this); // ensure that the this context within the handleSubmit function refers to the component instance.
   }
 
-  // function is responsible for handling form submission and making a POST request to the server.
+  // function is responsible for handling new user registration and making a POST request to the server.
   handleSubmit(e) {
     e.preventDefault();
     const { name, email, phone } = this.state;
@@ -37,6 +37,7 @@ export default class CreateUser extends Component {
         console.log(data, "userRegister");
       });
   }
+  
   render() {
     return (
       <>

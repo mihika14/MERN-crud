@@ -8,6 +8,7 @@ import {BsPencilSquare} from 'react-icons/bs'
 const HomePage = () => {
   const [users, setUsers] = useState([]);
 
+  //get to fetch user all information
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -21,6 +22,7 @@ const HomePage = () => {
     }
   };
 
+  //delete request to delete userinformation using user_id
   const deleteUser = async (userId) => {
     try {
       await axios.delete(`http://localhost:5000/users/${userId}`);

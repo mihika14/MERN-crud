@@ -46,6 +46,7 @@ export default class EditUser extends Component {
     this.setState({ phone: e.target.value });
   }
 
+  //to edit user info. using user_id
   onSubmit(e) {
     e.preventDefault();
     const userId = this.props.match.params.id; // Get the user ID from the URL parameter
